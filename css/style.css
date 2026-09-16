@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f5f7;
+    color: #222;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+}
+
+.main-header {
+    margin-bottom: 25px;
+    color: #1f1f1f;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+#controls {
+    display: grid;
+    grid-template-columns: 1fr 220px auto;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+#searchCar,
+#sortCars,
+#addCarBtn {
+    height: 48px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#searchCar {
+    width: 100%;
+    padding: 0 16px;
+    background: #fff;
+    text-align: left;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#searchCar:focus {
+    border-color: #888;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+#sortCars {
+    padding: 0 12px;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+#addCarBtn {
+    padding: 0 20px;
+    background: #222;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#addCarBtn:hover {
+    background: #444;
+}
+
+#addCarBtn:active {
+    transform: translateY(1px);
+}
+
+#catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.cardCar {
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardCar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.car-model {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.car-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+    color: #666;
+    font-size: 15px;
+}
+
+.car-price {
+    margin-bottom: 18px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #222;
+}
+
+.modalInfo,
+.deleteBtn,
+.editBtn {
+    width: 100%;
+    min-height: 42px;
+    margin: 4px 0;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.modalInfo {
+    background: #222;
+    color: #fff;
+}
+
+.modalInfo:hover {
+    background: #444;
+}
+
+.editBtn {
+    background: #e9e9e9;
+    color: #222;
+}
+
+.editBtn:hover {
+    background: #ddd;
+}
+
+.deleteBtn {
+    background: #f0f0f0;
+    color: #555;
+}
+
+.deleteBtn:hover {
+    background: #ddd;
+}
+
+.modalInfo:active,
+.deleteBtn:active,
+.editBtn:active {
+    transform: translateY(1px);
+}
+
+dialog {
+    width: min(400px, calc(100% - 30px));
+    padding: 28px;
+    border: none;
+    border-radius: 16px;
+    background: #fff;
+    color: #222;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+}
+
+#addCarDialog {
+    width: min(500px, calc(100% - 30px));
+}
+
+#addCarForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#addCarForm input {
+    width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+    color: #222;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#addCarForm input:focus {
+    border-color: #888;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+#addCarForm button {
+    margin: 0;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#addCarForm button[type="submit"] {
+    margin-top: 5px;
+    background: #222;
+    color: #fff;
+}
+
+#addCarForm button[type="submit"]:hover {
+    background: #444;
+}
+
+#cancelAddBtn {
+    background: #eee;
+    color: #333;
+}
+
+#cancelAddBtn:hover {
+    background: #ddd;
+}
+
+@media (max-width: 700px) {
+    main {
+        padding: 20px 15px 40px;
+    }
+
+    .main-header {
+        font-size: 28px;
+    }
+
+    #controls {
+        grid-template-columns: 1fr;
+    }
+
+    #catalog {
+        grid-template-columns: 1fr;
+    }
+}
