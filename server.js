@@ -121,7 +121,7 @@ app.delete('/api/cars/:id', async (req, res, next) => {
     }
 })
 
-app.use(express.static('.'))
+app.use(express.static('../vanillaJS'))
 
 app.listen(3000)
 
