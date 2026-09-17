@@ -1,22 +1,23 @@
+import type { Car } from "./types.js";
 
-const catalog = document.querySelector('#catalog');
-const inputSearch = document.querySelector('#searchCar');
-const sortSelect = document.querySelector('#sortCars');
-const dialog = document.querySelector('#carDialog');
-const dialogTitle = document.querySelector('#dialogTitle');
-const dialogInfo = document.querySelector('#dialogInfo');
+const catalog = document.querySelector('#catalog') as HTMLElement;
+const inputSearch = document.querySelector('#searchCar') as HTMLInputElement;
+const sortSelect = document.querySelector('#sortCars') as HTMLSelectElement;
+const dialog = document.querySelector('#carDialog') as HTMLDialogElement;
+const dialogTitle = document.querySelector('#dialogTitle') as HTMLElement;
+const dialogInfo = document.querySelector('#dialogInfo') as HTMLElement;
 
-function createInfoRow(text, className) {
+function createInfoRow(text: string, className?: string): HTMLParagraphElement {
     const el = document.createElement('p');
     el.textContent = text;
     if (className) el.className = className;
     return el;
 }
 
-function createCarCard(car) {
+function createCarCard(car: Car): HTMLDivElement {
     const card = document.createElement('div');
     card.className = 'cardCar';
-    card.dataset.id = car.id;
+    card.dataset.id = String(car.id);
 
     const model = createInfoRow(`${car.brand} ${car.model}`, 'car-model');
 
@@ -46,12 +47,12 @@ function createCarCard(car) {
     return card;
 }
 
-export function renderCars(cars) {
+export function renderCars(cars: Car[]): void {
     catalog.textContent = '';
     cars.forEach(car => catalog.append(createCarCard(car)));
 }
 
-export function sortCars(cars) {
+export function sortCars(cars: Car[]): Car[] {
     const result = [...cars];
     switch (sortSelect.value) {
         case 'priceAsc':
@@ -67,7 +68,7 @@ export function sortCars(cars) {
     }
 }
 
-export function updateCatalog(cars) {
+export function updateCatalog(cars: Car[]): void {
     const searchText = inputSearch.value.toLowerCase();
     let result = cars.filter(car => (
         car.brand + ' ' + car.model)
@@ -77,7 +78,7 @@ export function updateCatalog(cars) {
     renderCars(result);
 }
 
-export function showCarDetails(car) {
+export function showCarDetails(car: Car | undefined): void {
     if (!car) {
         return;
     }
@@ -92,6 +93,6 @@ export function showCarDetails(car) {
     dialog.showModal();
 }
 
-export function getCarById(cars, id) {
+export function getCarById(cars: Car[], id: number): Car | undefined {
     return cars.find(car => car.id === id);
 }

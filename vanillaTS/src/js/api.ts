@@ -1,13 +1,15 @@
+import type { Car, NewCarData } from "./types.js";
 export class ApiError extends Error {
-    constructor(message, status) {
+    status: number;
+    constructor(message: string, status: number) {
         super(message);
         this.name = 'ApiError';
         this.status = status;
     }
 }
 
-async function request(url, options) {
-    let response;
+async function request(url: string, options?: RequestInit): Promise<Response> {
+    let response: Response;
     try {
         response = await fetch(url, options);
     } catch {
@@ -26,13 +28,13 @@ async function request(url, options) {
     return response;
 }
 
-export async function getCars() {
+export async function getCars(): Promise<Car[]> {
     const response = await request('/api/cars');
-    const cars = await response.json();
+    const cars: Car[] = await response.json();
     return cars;
 }
 
-export async function addCar(carData) {
+export async function addCar(carData: NewCarData): Promise<Car> {
     const response = await request('/api/cars', {
         method: 'POST',
         headers: {
@@ -40,11 +42,11 @@ export async function addCar(carData) {
         },
         body: JSON.stringify(carData)
     });
-    const newCar = await response.json();
+    const newCar: Car = await response.json();
     return newCar;
 }
 
-export async function updateCar(id, carData) {
+export async function updateCar(id: number, carData: NewCarData): Promise<Car> {
     const response = await request(`/api/cars/${id}`, {
         method: 'PATCH',
         headers: {
@@ -52,11 +54,11 @@ export async function updateCar(id, carData) {
         },
         body: JSON.stringify(carData)
     });
-    const updatedCar = await response.json();
+    const updatedCar: Car = await response.json();
     return updatedCar;
 }
 
-export async function deleteCar(id) {
+export async function deleteCar(id: number): Promise<void> {
     await request(`/api/cars/${id}`, {
         method: 'DELETE'
     });

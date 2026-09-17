@@ -13,29 +13,31 @@ import {
     getCarById,
 } from "./catalog.js";
 
-const catalog = document.querySelector('#catalog');
-const inputSearch = document.querySelector('#searchCar');
-const sortSelect = document.querySelector('#sortCars');
-const dialog = document.querySelector('#carDialog');
-const closeBtn = document.querySelector('#closeBtn');
-const catalogStatus = document.querySelector('#catalogStatus');
-const addCarBtn = document.querySelector('#addCarBtn');
-const addCarDialog = document.querySelector('#addCarDialog');
-const addCarForm = document.querySelector('#addCarForm');
-const cancelAddBtn = document.querySelector('#cancelAddBtn');
-const brandInput = document.querySelector('#brandInput');
-const modelInput = document.querySelector('#modelInput');
-const yearInput = document.querySelector('#yearInput');
-const engineInput = document.querySelector('#engineInput');
-const powerInput = document.querySelector('#powerInput');
-const priceInput = document.querySelector('#priceInput');
-const submitBtn = addCarForm.querySelector('button[type="submit"]');
-const formError = document.querySelector('#formError');
+import type { Car, NewCarData } from "./types.js";
 
-let cars = [];
-let editingCarId = null;
+const catalog = document.querySelector('#catalog') as HTMLElement;
+const inputSearch = document.querySelector('#searchCar') as HTMLInputElement;
+const sortSelect = document.querySelector('#sortCars') as HTMLSelectElement;
+const dialog = document.querySelector('#carDialog') as HTMLDialogElement;
+const closeBtn = document.querySelector('#closeBtn') as HTMLButtonElement;
+const catalogStatus = document.querySelector('#catalogStatus') as HTMLElement;
+const addCarBtn = document.querySelector('#addCarBtn') as HTMLButtonElement;
+const addCarDialog = document.querySelector('#addCarDialog') as HTMLDialogElement;
+const addCarForm = document.querySelector('#addCarForm') as HTMLFormElement;
+const cancelAddBtn = document.querySelector('#cancelAddBtn') as HTMLButtonElement;
+const brandInput = document.querySelector('#brandInput') as HTMLInputElement;
+const modelInput = document.querySelector('#modelInput') as HTMLInputElement;
+const yearInput = document.querySelector('#yearInput') as HTMLInputElement;
+const engineInput = document.querySelector('#engineInput') as HTMLInputElement;
+const powerInput = document.querySelector('#powerInput') as HTMLInputElement;
+const priceInput = document.querySelector('#priceInput') as HTMLInputElement;
+const submitBtn = addCarForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+const formError = document.querySelector('#formError') as HTMLElement;
 
-function getErrorMessage(error) {
+let cars: Car[] = [];
+let editingCarId: number | null = null;
+
+function getErrorMessage(error: unknown): string {
     if (error instanceof ApiError) {
         if (error.status === 404) {
             return 'Автомобиль не найден';
@@ -61,11 +63,11 @@ sortSelect.addEventListener('change', () => {
 })
 
 catalog.addEventListener('click', async (event) => {
-    const button = event.target;
+    const button = event.target as HTMLElement;
     if (!button.matches('button')) {
         return;
     }
-    const card = button.closest('.cardCar');
+    const card = button.closest('.cardCar') as HTMLElement | null;
     if (!card) {
         return;
     }
@@ -79,6 +81,9 @@ catalog.addEventListener('click', async (event) => {
     }
     if (button.classList.contains('deleteBtn')) {
         const car = getCarById(cars, id);
+        if (!car) {
+            return;
+        }
         const confirmed = confirm(`Удалить ${car.brand} ${car.model}?`);
         if (!confirmed) {
             return;
@@ -104,10 +109,10 @@ catalog.addEventListener('click', async (event) => {
 
         brandInput.value = car.brand;
         modelInput.value = car.model;
-        yearInput.value = car.year;
-        engineInput.value = car.engine;
-        powerInput.value = car.power;
-        priceInput.value = car.price;
+        yearInput.value = String(car.year);
+        engineInput.value = String(car.engine);
+        powerInput.value = String(car.power);
+        priceInput.value = String(car.price);
 
         submitBtn.textContent = 'Сохранить изменения';
         addCarDialog.showModal();
@@ -135,10 +140,12 @@ addCarForm.addEventListener('submit', async (event) => {
     submitBtn.textContent = 'Сохранение...';
     const isEditing = editingCarId !== null;
     try {
-        if (isEditing) {
+        if (isEditing && editingCarId !== null) {
             const updatedCar = await updateCar(editingCarId, carData);
             const car = cars.find(car => car.id === editingCarId);
-            Object.assign(car, updatedCar);
+            if (car) {
+                Object.assign(car, updatedCar);
+            }
         } else {
             const newCar = await addCar(carData);
             cars.push(newCar);
@@ -160,7 +167,7 @@ addCarForm.addEventListener('submit', async (event) => {
     }
 })
 
-function validateCar(carData) {
+function validateCar(carData: NewCarData): string | null {
     if (!carData.brand.trim() || !carData.model.trim()) {
         return 'Введите бренд и модель';
     }
@@ -179,7 +186,7 @@ cancelAddBtn.addEventListener('click', () => {
     addCarDialog.close();
 })
 
-async function loadCars() {
+async function loadCars(): Promise<void> {
     catalogStatus.textContent = 'загрузка автомобилей';
     try {
         cars = await getCars();
@@ -191,11 +198,11 @@ async function loadCars() {
     }
 }
 
-function getCarFromForm() {
+function getCarFromForm(): NewCarData {
     const formData = new FormData(addCarForm);
     return {
-        brand: formData.get('brand'),
-        model: formData.get('model'),
+        brand: formData.get('brand') as string,
+        model: formData.get('model') as string,
         year: Number(formData.get('year')),
         engine: Number(formData.get('engine')),
         power: Number(formData.get('power')),
