@@ -1,0 +1,22 @@
+{
+  "name": "car_catalog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitriyR-13/car-catalog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmitriyR-13/car-catalog/issues"
+  },
+  "homepage": "https://github.com/dmitriyR-13/car-catalog#readme"
+}

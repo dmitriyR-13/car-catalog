@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "year": 2005,
+    "engine": 1.6,
+    "power": 102,
+    "price": 450000
+  },
+  {
+    "id": 2,
+    "brand": "Volkswagen",
+    "model": "Passat",
+    "year": 2006,
+    "engine": 1.8,
+    "power": 160,
+    "price": 620000
+  },
+  {
+    "id": 3,
+    "brand": "Volkswagen",
+    "model": "Polo",
+    "year": 2020,
+    "engine": 1.6,
+    "power": 112,
+    "price": 990000
+  },
+  {
+    "id": 4,
+    "brand": "BMW",
+    "model": "320i",
+    "year": 2008,
+    "engine": 2,
+    "power": 157,
+    "price": 700000
+  },
+  {
+    "id": 6,
+    "brand": "BMW",
+    "model": "520d",
+    "year": 2014,
+    "engine": 2,
+    "power": 184,
+    "price": 1450000
+  },
+  {
+    "id": 7,
+    "brand": "BMW",
+    "model": "X1",
+    "year": 2013,
+    "engine": 2,
+    "power": 184,
+    "price": 1350000
+  },
+  {
+    "id": 8,
+    "brand": "Audi",
+    "model": "A4",
+    "year": 2011,
+    "engine": 1.8,
+    "power": 160,
+    "price": 780000
+  },
+  {
+    "id": 9,
+    "brand": "Audi",
+    "model": "A6",
+    "year": 2015,
+    "engine": 2,
+    "power": 190,
+    "price": 1650000
+  },
+  {
+    "id": 10,
+    "brand": "Audi",
+    "model": "Q5",
+    "year": 2014,
+    "engine": 2,
+    "power": 225,
+    "price": 1800000
+  },
+  {
+    "id": 11,
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2018,
+    "engine": 2.5,
+    "power": 181,
+    "price": 2100000
+  },
+  {
+    "id": 14,
+    "brand": "Honda",
+    "model": "CR-V",
+    "year": 2015,
+    "engine": 2.4,
+    "power": 188,
+    "price": 1750000
+  },
+  {
+    "id": 15,
+    "brand": "Skoda",
+    "model": "Octavia",
+    "year": 2018,
+    "engine": 1.8,
+    "power": 180,
+    "price": 1600000
+  },
+  {
+    "id": 16,
+    "brand": "Mercedes-Benz",
+    "model": "C180",
+    "year": 2014,
+    "engine": 1.6,
+    "power": 156,
+    "price": 1700000
+  },
+  {
+    "id": 19,
+    "brand": "BMW",
+    "model": "525",
+    "year": 2012,
+    "engine": 2.5,
+    "power": 204,
+    "price": 1200000
+  }
+]
