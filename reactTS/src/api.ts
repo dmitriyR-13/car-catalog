@@ -1,4 +1,4 @@
-import type { Car, NewCarData } from "./type";
+import type { Car, NewCarData } from "./types";
 export class ApiError extends Error {
     status: number;
     constructor(message: string, status: number) {

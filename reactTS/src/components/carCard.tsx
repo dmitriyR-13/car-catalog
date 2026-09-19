@@ -1,4 +1,4 @@
-import type { Car } from "../type";
+import type { Car } from "../types";
 interface CarCardProps {
     car: Car;
     onShowDetails: (car: Car) => void;

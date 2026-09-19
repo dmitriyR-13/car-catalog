@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import type { Car, NewCarData } from "../type";
+import type { Car, NewCarData } from "../types";
 import { getCars, addCar, updateCar, deleteCar } from "../api";
 
 export function useCars() {
