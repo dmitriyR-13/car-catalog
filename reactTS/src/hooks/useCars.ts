@@ -24,9 +24,6 @@ export function useCars() {
         //eslint-disable-next-line react-hooks/set-state-in-effect -- 
         loadCars();
     }, [loadCars]);
-    return {
-        cars, isLoading, error, loadCars
-    };
 
     const add = useCallback(async (carData: NewCarData) => {
         const newCar = await addCar(carData);

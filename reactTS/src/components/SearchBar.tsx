@@ -7,7 +7,7 @@ interface SearchBarProps {
 
 export function SearchBar({ searchText, onSearchChange, sortOption, onSortOption }: SearchBarProps) {
     return (
-        <div id="controls">
+        <>
             <div>
                 <label htmlFor="searchCar" className="visually-hidden">Поиск автомобиля</label>
                 <input
@@ -32,6 +32,6 @@ export function SearchBar({ searchText, onSearchChange, sortOption, onSortOption
                     <option value="yearDesc">год ↓</option>
                 </select>
             </div>
-        </div>
+        </>
     )
 }

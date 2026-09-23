@@ -17,8 +17,8 @@ export function CarCard({car, onShowDetails, onEdit, onDelete}: CarCardProps) {
             </div>
             <p className="car-price">{car.price} ₽</p>
             <button className="modalInfo" onClick={() => onShowDetails(car)}>подробнее</button>
-            <button className="deleteBtn" onClick={() => onDelete}>удалить автомобиль</button>
-            <button className="editBtn" onClick={() => onEdit}>редактировать данные</button>
+            <button className="deleteBtn" onClick={() => onDelete(car)}>удалить автомобиль</button>
+            <button className="editBtn" onClick={() => onEdit(car)}>редактировать данные</button>
         </div>
     );
 }

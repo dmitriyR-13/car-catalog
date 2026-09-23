@@ -1,14 +1,5 @@
 [
   {
-    "id": 1,
-    "brand": "Volkswagen",
-    "model": "Golf",
-    "year": 2005,
-    "engine": 1.6,
-    "power": 102,
-    "price": 450000
-  },
-  {
     "id": 2,
     "brand": "Volkswagen",
     "model": "Passat",
@@ -124,5 +115,14 @@
     "engine": 2.5,
     "power": 204,
     "price": 1200000
+  },
+  {
+    "id": 20,
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "year": 2005,
+    "engine": 1.6,
+    "power": 102,
+    "price": 500000
   }
 ]
