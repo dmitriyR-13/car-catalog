@@ -21,7 +21,7 @@ export function SearchBar({ searchText, onSearchChange, sortOption, onSortOption
             <div>
                 <label htmlFor="sortCars" className="visually-hidden">Сортировка</label>
                 <select
-                    id="sortCar"
+                    id="sortCars"
                     value={sortOption}
                     onChange={(e) => onSortOption(e.target.value)}
                 >

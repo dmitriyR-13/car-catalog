@@ -10,13 +10,13 @@ export function CarDetailsDialog({ car, onClose }: CarDetailsDialogProps) {
         return null;
     }
     return (
-        <dialog open>
+        <dialog id="carDialog" open>
             <h2>{car.brand} {car.model}</h2>
-            <div>
+            <div id="dialogInfo">
                 <p>Год: {car.year}</p>
                 <p>Объем: {car.engine}</p>
                 <p>Мощность: {car.power} л.с.</p>
-                <p>{car.price}</p>
+                <p>{car.price} ₽</p>
             </div>
             <button onClick={onClose}>Закрыть</button>
         </dialog>

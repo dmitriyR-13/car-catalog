@@ -1,14 +1,5 @@
 [
   {
-    "id": 2,
-    "brand": "Volkswagen",
-    "model": "Passat",
-    "year": 2006,
-    "engine": 1.8,
-    "power": 160,
-    "price": 620000
-  },
-  {
     "id": 3,
     "brand": "Volkswagen",
     "model": "Polo",

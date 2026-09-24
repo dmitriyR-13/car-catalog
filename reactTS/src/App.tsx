@@ -29,8 +29,10 @@ function App() {
 
 
   return (
-    <>
-      <h1 id="mainTitle">Auto Catalog</h1>
+    <main id="main">
+      <header className="main-header">
+        <h1 id="mainTitle">Auto Catalog</h1>
+      </header>
       <div id="controls">
         <SearchBar
           searchText={searchText}
@@ -75,7 +77,7 @@ function App() {
         }}
         onSubmit={handleSubmit}
       />
-    </>
+    </main>
   )
 }
 
