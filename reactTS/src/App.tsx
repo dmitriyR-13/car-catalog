@@ -49,6 +49,8 @@ function App() {
           Добавить автомобиль
         </button>
       </div>
+      {isLoading && <p id="catalogStatus">Загрузка автомобилей...</p>}
+      {error && <p id="catalogStatus">{error}</p>}
       <CarList
         cars={sortedCars}
         onShowDetails={(car) => { setSelectedCar(car) }}
