@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Car, NewCarData } from "../types";
-
+import { validateCar } from "../utils/validateCar";
 interface CarFormDialogProps {
     isOpen: boolean;
     editingCar: Car | null;
@@ -40,6 +40,11 @@ export function CarFormDialog({ isOpen, editingCar, onClose, onSubmit }: CarForm
             engine: Number(engine),
             power: Number(power),
             price: Number(price)
+        }
+        const validationError = validateCar(carData);
+        if (validationError) {
+            setFormError(validationError);
+            return;
         }
         try {
             await onSubmit(carData);

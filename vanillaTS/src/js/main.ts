@@ -176,7 +176,7 @@ function validateCar(carData: NewCarData): string | null {
     }
     if (carData.engine <= 0 || carData.power <= 0 || carData.price <= 0) {
         return 'Введите корректные данные';
-    };
+    }
     return null;
 }
 

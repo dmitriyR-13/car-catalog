@@ -5,6 +5,8 @@ import { CarList } from "./components/CarsList";
 import type { Car, NewCarData } from "./types";
 import { CarDetailsDialog } from "./components/CarDetailsDialog";
 import { CarFormDialog } from "./components/CarFormDialog";
+import { sortCars } from "./utils/sortCars";
+import { filterCars } from "./utils/filterCars";
 
 function App() {
   const { cars, isLoading, error, add, update, remove } = useCars();
@@ -14,7 +16,7 @@ function App() {
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
   const [editingCar, setEditingCar] = useState<Car | null>(null);
 
-  const filteredCars = cars.filter(car => (car.brand + ' ' + car.model).toLowerCase().includes(searchText));
+  const filteredCars = filterCars(cars, searchText);
   const sortedCars = sortCars(filteredCars, sortOption);
 
   async function handleSubmit(carData: NewCarData) {
@@ -83,20 +85,5 @@ function App() {
   )
 }
 
-function sortCars(cars: Car[], sortOption: string): Car[] {
-  const result = [...cars];
-  switch (sortOption) {
-    case 'priceAsc':
-      return result.sort((a, b) => a.price - b.price);
-    case 'priceDesc':
-      return result.sort((a, b) => b.price - a.price);
-    case 'yearAsc':
-      return result.sort((a, b) => a.year - b.year);
-    case 'yearDesc':
-      return result.sort((a, b) => b.year - a.year);
-    default:
-      return result;
-  }
-}
 
 export default App;
